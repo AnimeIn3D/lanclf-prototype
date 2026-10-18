@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Lancaster Lacrosse Foundation — 2026 Redesign Prototype</title>
+<style>
+.inc{font-weight:700;margin:0 0 8px}.cta-strip{margin-top:28px;display:flex;gap:14px 20px;flex-wrap:wrap;align-items:center;padding:20px 22px;border-radius:14px;background:var(--dark);color:#fff;border-left:5px solid var(--red)}.cta-strip div{flex:1 1 260px}.cta-strip b{font-size:20px;display:block}.cta-strip span{color:#ccc}.wh{margin:22px 0 10px;font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.ev{display:none}.ev:target{display:block}body:has(.ev:target) #home{display:none}
+:root{--red:#c8102e;--bg:#fff;--surface:#f3f3f4;--card:#fff;--ink:#111;--muted:#5d5f64;--line:#dcdde0;--dark:#111;--on-dark:#fff;--rd:var(--red);
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0b0b0c;--surface:#151517;--card:#1b1b1e;--ink:#f2f2f3;--muted:#a1a3a9;--line:#2c2c30;--dark:#000;--rd:#ef3a54}}
+:root[data-theme="dark"]{--bg:#0b0b0c;--surface:#151517;--card:#1b1b1e;--ink:#f2f2f3;--muted:#a1a3a9;--line:#2c2c30;--dark:#000;--rd:#ef3a54}
+html{scroll-behavior:smooth;scroll-padding-top:calc(env(safe-area-inset-top,0px) + 72px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--dark);z-index:20}
+a{color:inherit}[hidden]{display:none!important}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:10;background:var(--dark);color:var(--on-dark);border-bottom:3px solid var(--red)}
+.bar{max-width:1100px;margin:auto;display:flex;align-items:center;gap:14px;padding:10px 20px}
+.brand{display:flex;gap:10px;align-items:center;text-decoration:none;font-weight:800;letter-spacing:-.01em;line-height:1.1}
+.brand small{display:block;font-weight:600;color:#aaa;font-size:11px;letter-spacing:.1em;text-transform:uppercase}
+[data-logo]{display:inline-block;width:40px;height:40px;flex:none}[data-logo] img,[data-logo] svg{width:100%;height:100%;object-fit:contain;display:block}
+nav{margin-left:auto;display:flex;gap:2px;flex-wrap:wrap;justify-content:flex-end}
+nav a{padding:8px 11px;border-radius:8px;text-decoration:none;font-size:14px;font-weight:600;color:#ccc}
+nav a:hover{background:#ffffff22;color:#fff}nav a.cta{background:var(--red);color:#fff}
+.wrap{max-width:1100px;margin:auto}
+.hero{background:radial-gradient(circle at 85% 20%,#c8102e55,transparent 45%),var(--dark);color:#fff;padding:72px 20px 84px;position:relative;overflow:hidden}
+.hero .big{position:absolute;right:-40px;top:20px;width:340px;height:340px;opacity:.12}
+.eyebrow{color:#ff5a72;font-weight:700;letter-spacing:.14em;text-transform:uppercase;font-size:13px}
+h1{font-size:clamp(36px,6.5vw,66px);line-height:1.02;margin:12px 0 16px;letter-spacing:-.035em;max-width:14ch}
+h1 em{font-style:normal;color:var(--rd)}
+.hero p{max-width:56ch;font-size:18px;color:#ddd}
+.btns{display:flex;gap:12px;flex-wrap:wrap;margin-top:26px}
+.btn{display:inline-block;padding:12px 22px;border-radius:10px;font:inherit;font-weight:700;text-decoration:none;border:2px solid transparent;cursor:pointer}
+.btn.p{background:var(--red);color:#fff}.btn.s{border-color:#fff8;color:#fff}.btn.o{border-color:var(--ink);color:var(--ink)}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px;margin-top:-42px;position:relative}
+.stat{background:var(--card);border:1px solid var(--line);border-top:4px solid var(--red);border-radius:12px;padding:16px;box-shadow:0 8px 24px #0003}
+.stat b{font-size:26px;display:block;line-height:1.15}.stat span{color:var(--muted);font-size:14px}
+section{padding:64px 20px}.alt{background:var(--surface)}
+h2{font-size:clamp(26px,4vw,38px);letter-spacing:-.025em;margin:0 0 8px}
+.lead{color:var(--muted);max-width:62ch;margin:0 0 28px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:16px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:22px;display:block;text-decoration:none;color:inherit}
+a.card{transition:transform .15s,border-color .15s}a.card:hover{transform:translateY(-3px);border-color:var(--red)}
+.card h3{margin:0 0 6px}.card p{margin:0;color:var(--muted)}
+.tag{display:inline-block;font-size:12px;font-weight:700;padding:3px 10px;border-radius:99px;background:var(--surface);color:var(--rd);margin-bottom:10px}
+.more{display:inline-block;margin-top:12px;font-weight:700;color:var(--rd)}
+.feat{border-color:var(--red);background:linear-gradient(135deg,var(--card),var(--surface))}
+.news{display:grid;grid-template-columns:1.3fr 1fr;gap:16px}
+.ph{border-radius:14px;min-height:160px;background:repeating-linear-gradient(45deg,var(--line) 0 12px,var(--surface) 12px 24px);display:flex;align-items:end;padding:14px;color:var(--muted);font-size:13px;border:1px solid var(--line)}
+.cal{padding:0;margin:0}.cal a{display:flex;gap:16px;align-items:center;padding:14px 4px;border-bottom:1px solid var(--line);text-decoration:none}
+.cal li{list-style:none}.cal a:hover{background:var(--surface)}
+.date{min-width:60px;text-align:center;background:var(--dark);color:#fff;border-radius:10px;padding:6px;font-weight:800;line-height:1.2}
+.date small{display:block;font-size:11px;color:#ff8296;text-transform:uppercase}
+.tiers{display:grid;grid-template-columns:repeat(auto-fit,minmax(235px,1fr));gap:16px;align-items:stretch}
+.tier{border-radius:16px;padding:24px;border:1px solid var(--line);background:var(--card);display:flex;flex-direction:column}
+.tier h3{margin:0;font-size:24px;letter-spacing:-.02em}.price{font-size:34px;font-weight:800;margin:4px 0 12px}.price small{font-size:14px;color:var(--muted);font-weight:600}
+.tier ul{padding-left:18px;margin:0 0 18px;flex:1}.tier li{margin:5px 0}
+.tier.epic{background:var(--red);color:#fff;border-color:var(--red);box-shadow:0 12px 30px #c8102e55}
+.tier.leg{background:var(--dark);color:#fff;border-color:var(--red);border-width:2px}
+.tier.epic .price small,.tier.leg .price small{color:#ddd}
+.tier .btn{text-align:center}.tier.epic .btn{background:#fff;color:#111}.tier.leg .btn{background:var(--red);color:#fff}
+.badge{align-self:flex-start;font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;padding:3px 9px;border-radius:99px;background:#ffffff30;margin-bottom:10px}
+.wall{margin-top:36px}.wall h4{margin:22px 0 10px;font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.logos{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px}
+.logos div{border:2px dashed var(--line);border-radius:12px;height:84px;display:grid;place-items:center;color:var(--muted);font-size:13px;font-weight:600;text-align:center}
+.prem{display:flex;flex-wrap:wrap;gap:8px 28px;font-size:26px;font-weight:900;letter-spacing:-.02em}
+.gold{display:flex;flex-wrap:wrap;gap:6px 20px;color:var(--muted);font-size:15px}
+form{display:grid;grid-template-columns:1fr 1fr;gap:14px;max-width:720px}.full{grid-column:1/-1}
+label{font-size:14px;font-weight:600;display:block;margin-bottom:4px}
+input,select,textarea{width:100%;padding:11px 12px;border-radius:10px;border:1px solid var(--line);background:var(--bg);color:var(--ink);font:inherit}
+input:focus,select:focus,textarea:focus,a:focus-visible,.btn:focus-visible{outline:3px solid var(--red);outline-offset:2px}
+.note{font-size:13px;color:var(--muted)}
+.ehero{background:var(--dark);color:#fff;padding:56px 20px 48px;border-bottom:4px solid var(--red)}
+.ehero h1{max-width:20ch;font-size:clamp(32px,5.5vw,54px)}.back{color:#ddd;text-decoration:none;font-weight:600}
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;margin:24px 0}
+.facts div{background:var(--surface);border-left:4px solid var(--red);padding:14px 16px;border-radius:8px}.facts b{display:block;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.body{max-width:760px}.body p{margin:0 0 16px}
+footer{background:var(--dark);color:#fff;padding:40px 20px calc(40px + env(safe-area-inset-bottom,0px));border-top:4px solid var(--red)}
+footer a{opacity:.85}
+@media (max-width:720px){.news,form{grid-template-columns:1fr}nav a:not(.cta){display:none}.hero{padding-top:48px}.hero .big{width:220px;height:220px}}
+</style></head>
+<body>
+<header><div class="bar">
+<a class="brand" href="#top"><span data-logo><svg viewBox="0 0 40 40" role="img" aria-label="Logo placeholder"><rect width="40" height="40" rx="8" fill="#c8102e"/><path d="M13 8h6v18h9v6H13z" fill="#fff"/></svg></span><span>Lancaster Lacrosse Foundation<small>Home of the Legends</small></span></a>
+<nav aria-label="Main"><a href="#teams">Teams</a><a href="#events">Programs &amp; Events</a><a href="#sponsors">Sponsors</a><a href="#calendar">Calendar</a><a href="#contact">Contact</a><a class="cta" href="#register">Register</a></nav>
+</div></header>
+
+<div class="page" id="home">
+<main id="top">
+<div class="hero"><span class="big" data-logo><svg viewBox="0 0 40 40" role="img" aria-label="Logo placeholder"><rect width="40" height="40" rx="8" fill="#c8102e"/><path d="M13 8h6v18h9v6H13z" fill="#fff"/></svg></span><div class="wrap">
+<div class="eyebrow">Supporting Lancaster School Lacrosse</div>
+<h1>Grow the game. <em>Build the Legends.</em></h1>
+<p>Through training and fundraising, we develop Lancaster players both athletically and socially — from Modified to Varsity.</p>
+<div class="btns"><a class="btn p" href="#sponsors">Sponsor the team</a><a class="btn s" href="#e-florida-camp">Florida Camp 2027</a></div>
+</div></div>
+<div class="wrap"><div class="stats">
+<div class="stat"><b>Jan 9, 2027</b><span>Meat Raffle fundraiser</span></div>
+<div class="stat"><b>March 2027</b><span>Florida camp &amp; Universal</span></div>
+<div class="stat"><b>3 levels</b><span>Varsity · JV · Modified</span></div>
+<div class="stat"><b>Alumni</b><span>Collegiate players network</span></div>
+</div></div>
+
+<section><div class="wrap"><h2>Latest from the Foundation</h2>
+<p class="lead">Thank you to everyone who attended our 9th annual Golf Tourney and Alumni Weekend.</p>
+<div class="news"><div class="ph" role="img" aria-label="Photo placeholder">Photo: Alumni Game 2025</div>
+<div class="card"><span class="tag">Award</span><h3>2025 Adam Spider Coaches Award</h3><p>Congratulations to Ricky Andres, this year’s winner. All golf outing photos are on our Facebook page.</p></div></div></div></section>
+
+<section id="events" class="alt"><div class="wrap"><h2>Programs &amp; Events</h2>
+<p class="lead">Select an event for full details.</p>
+<div class="grid">
+<a class="card feat" href="#e-florida-camp"><span class="tag">March 2027</span><h3>Florida Camp Trip</h3><p>Training camp in Florida, plus a day at Universal Studios.</p><span class="more">View details →</span></a>
+<a class="card feat" href="#e-meat-raffle"><span class="tag">Jan 9, 2027</span><h3>Meat Raffle Fundraiser</h3><p>Helping pay for the Florida trip.</p><span class="more">View details →</span></a>
+<a class="card" href="#e-golf-tourney"><span class="tag">Annual</span><h3>Golf Tourney</h3><p>Our flagship summer fundraiser, now 9 years running.</p><span class="more">View details →</span></a>
+<a class="card" href="#e-alumni-weekend"><span class="tag">Annual</span><h3>Alumni Weekend</h3><p>Alumni game and reunion with current players.</p><span class="more">View details →</span></a>
+</div>
+<div class="cta-strip"><div><b>Want to help the Legends?</b><span>Our events run on volunteers and fundraising.</span></div><a class="btn p" href="#contact" data-tier="Volunteering">Volunteer</a><a class="btn s" href="#contact" data-tier="Fundraising">Fundraise for the team</a></div>
+</div></section>
+
+<section id="sponsors"><div class="wrap"><h2>Our Sponsors</h2>
+<p class="lead">Thank you to the businesses and families who support the Legends.</p>
+<p class="note">Sample layout with placeholder names — real sponsors replace these.</p>
+<h4 class="wh">Epic &amp; Legendary</h4><div class="logos"><div>Your logo here</div><div>Your logo here</div><div>Your logo here</div><div>Your logo here</div></div>
+<h4 class="wh">Premium</h4><div class="prem"><span>Sample Premium Name</span><span>Another Sponsor</span><span>Local Business Co.</span></div>
+<h4 class="wh">Golden</h4><div class="gold"><span>Sample Family</span><span>Sample Family</span><span>Sample Name</span><span>Sample Name</span><span>Sample Name</span></div>
+<h2 style="margin-top:64px">Become a Sponsor</h2>
+<p class="lead">Individual and business sponsorships directly support our players. Each level includes everything from the one before it.</p>
+<div class="tiers">
+<div class="tier"><h3>Golden</h3><p class="inc">Where it starts</p>
+<ul><li>Your name listed with our Golden sponsors</li><li>Direct support for player development</li></ul><a class="btn o" href="#contact" data-tier="Sponsorship">Become Golden</a></div>
+<div class="tier"><h3>Premium</h3><p class="inc">All the features of Golden, plus:</p>
+<ul><li>Your name in larger, bold type above Golden sponsors</li><li>Vinyl banner at home games</li><li>Listing in the game program</li></ul><a class="btn o" href="#contact" data-tier="Sponsorship">Become Premium</a></div>
+<div class="tier leg"><span class="badge">Featured</span><h3>Legendary</h3><p class="inc">All the features of Premium, plus:</p>
+<ul><li>Your company logo on this website</li><li>Your logo on the vinyl banner at every home game</li><li>Your logo in the game program</li><li>Your logo on a practice shirt</li></ul><a class="btn" href="#contact" data-tier="Sponsorship">Become Legendary</a></div>
+<div class="tier epic"><span class="badge">Top tier</span><h3>Epic</h3><p class="inc">All the features of Legendary, plus:</p>
+<ul><li>Additional Epic perk — to be defined</li></ul><a class="btn" href="#contact" data-tier="Sponsorship">Become Epic</a></div>
+</div></div></section>
+
+<section id="teams" class="alt"><div class="wrap"><h2>The Teams</h2><p class="lead">Rosters, alumni and school records.</p>
+<div class="grid">
+<a class="card" href="#e-varsity"><span class="tag">Roster</span><h3>Boys Varsity</h3><p>Roster and coaches →</p></a>
+<a class="card" href="#e-jv"><span class="tag">Roster</span><h3>Boys Junior Varsity</h3><p>Roster and coaches →</p></a>
+<a class="card" href="#e-modified"><span class="tag">Roster</span><h3>Boys Modified</h3><p>Roster and coaches →</p></a>
+<a class="card" href="#e-alumni"><span class="tag">Alumni</span><h3>Collegiate Players</h3><p>Where our graduates play →</p></a>
+<a class="card" href="#e-records"><span class="tag">History</span><h3>School Records</h3><p>Program milestones →</p></a>
+</div></div></section>
+
+<section id="calendar"><div class="wrap"><h2>Calendar</h2><p class="lead">Upcoming events. A live calendar feed can replace this list.</p>
+<ul class="cal">
+<li><a href="#e-meat-raffle"><div class="date"><small>Jan</small>9</div><div><b>Meat Raffle Fundraiser</b><br><span class="note">Benefits the Florida trip · 2027</span></div></a></li>
+<li><a href="#e-florida-camp"><div class="date"><small>Mar</small>’27</div><div><b>Florida Camp Trip + Universal Studios</b><br><span class="note">March 2027</span></div></a></li>
+</ul></div></section>
+
+<section id="register" class="alt"><div class="wrap"><h2>Registration</h2><p class="lead">Register your player online. * required.</p>
+<form onsubmit="event.preventDefault();this.querySelector('.ok').hidden=false">
+<div><label for="pf">Player first name*</label><input id="pf" required></div>
+<div><label for="pl">Player last name*</label><input id="pl" required></div>
+<div><label for="gr">Grade*</label><select id="gr" required><option value="">Select</option><option>7</option><option>8</option><option>9</option><option>10</option><option>11</option><option>12</option></select></div>
+<div><label for="pc">Parent/guardian name</label><input id="pc"></div>
+<div><label for="em">Parent email*</label><input id="em" type="email" required></div>
+<div><label for="ph">Parent cell phone*</label><input id="ph" type="tel" required></div>
+<div class="full"><button class="btn p" type="submit">Submit registration</button><p class="ok note" hidden>Prototype only — nothing was sent.</p></div></form></div></section>
+
+<section id="contact"><div class="wrap"><h2>Contact &amp; Sponsorship Inquiries</h2><p class="lead">Call (716) 668-5486 or send a message.</p>
+<form onsubmit="event.preventDefault();this.querySelector('.ok').hidden=false">
+<div><label for="n">Name*</label><input id="n" required></div>
+<div><label for="e">Email</label><input id="e" type="email"></div>
+<div class="full"><label for="t">I’m interested in</label><select id="t"><option>General question</option><option>Sponsorship</option><option>Registration</option><option>Volunteering</option><option>Fundraising</option></select></div>
+<div class="full"><label for="m">Comments</label><textarea id="m" rows="4"></textarea></div>
+<div class="full"><button class="btn p" type="submit">Send message</button><p class="ok note" hidden>Prototype only — nothing was sent.</p></div></form>
+<p class="note">Contacts: Mike Jandzinski, Bob Gorenflo, Ken Malecki, Mark Stevens.</p></div></section>
+</main></div>
+
+<div class="page ev" id="e-florida-camp"><div class="ehero"><div class="wrap"><a class="back" href="#events">← All programs &amp; events</a><div class="eyebrow" style="margin-top:18px">March 2027</div><h1>Florida Camp Trip</h1></div></div>
+<section><div class="wrap body"><div class="facts"><div><b>When</b>March 2027</div><div><b>Where</b>Florida</div><div><b>Bonus</b>Universal Studios</div></div>
+<p>The Legends head south in March 2027 for a lacrosse camp in Florida — and the boys will also get a day of fun at Universal Studios.</p>
+<p>The trip is supported by our Jan 9, 2027 meat raffle and by team sponsorships. Exact dates, costs and itinerary will be posted here once finalized.</p>
+<div class="btns"><a class="btn p" href="#e-meat-raffle">Support the trip: Meat Raffle</a><a class="btn o" href="#sponsors">Sponsor a player</a></div></div></section></div>
+
+<div class="page ev" id="e-meat-raffle"><div class="ehero"><div class="wrap"><a class="back" href="#events">← All programs &amp; events</a><div class="eyebrow" style="margin-top:18px">Saturday · Jan 9, 2027</div><h1>Meat Raffle Fundraiser</h1></div></div>
+<section><div class="wrap body"><div class="facts"><div><b>Date</b>Jan 9, 2027</div><div><b>Time &amp; place</b>To be announced</div><div><b>Benefits</b>Florida Camp Trip</div></div>
+<p>Join us for a meat raffle to help pay for the team’s March 2027 Florida trip. Proceeds go directly toward getting our players there.</p>
+<p>Time, location and ticket details will be added here.</p>
+<div class="btns"><a class="btn p" href="#e-florida-camp">About the Florida trip</a><a class="btn o" href="#contact">Questions? Contact us</a></div></div></section></div>
+
+<div class="page ev" id="e-golf-tourney"><div class="ehero"><div class="wrap"><a class="back" href="#events">← All programs &amp; events</a><div class="eyebrow" style="margin-top:18px">Annual fundraiser</div><h1>Golf Tourney</h1></div></div>
+<section><div class="wrap body"><div class="facts"><div><b>History</b>9th annual held in 2025</div><div><b>Photos</b>On our Facebook page</div></div>
+<p>Our annual golf tourney raises funds for player development and is held alongside Alumni Weekend. Thank you to everyone who attended the 9th annual outing.</p>
+<div class="btns"><a class="btn p" href="http://www.facebook.com/pages/Lancaster-Lacrosse-Foundation/520532031319456">Golf photos on Facebook</a><a class="btn o" href="#sponsors">Become a sponsor</a></div></div></section></div>
+
+<div class="page ev" id="e-alumni-weekend"><div class="ehero"><div class="wrap"><a class="back" href="#events">← All programs &amp; events</a><div class="eyebrow" style="margin-top:18px">Annual</div><h1>Alumni Weekend</h1></div></div>
+<section><div class="wrap body"><div class="facts"><div><b>Features</b>Alumni game &amp; reunion</div><div><b>Award</b>Adam Spider Coaches Award</div></div>
+<p>Alumni return to play current Legends and reconnect with the program. The 2025 Adam Spider Coaches Award went to Ricky Andres.</p>
+<div class="btns"><a class="btn p" href="#teams">Alumni collegiate players</a></div></div></section></div>
+
+<div class="page ev" id="e-varsity"><div class="ehero"><div class="wrap"><a class="back" href="#teams">← All teams</a><div class="eyebrow" style="margin-top:18px">Roster</div><h1>Boys Varsity</h1></div></div>
+<section><div class="wrap body"><p>Roster, coaches and schedule will appear here. Content to be supplied from the current site.</p>
+<div class="facts"><div><b>Coaches</b>To be added</div><div><b>Schedule</b>To be added</div></div></div></section></div>
+<div class="page ev" id="e-jv"><div class="ehero"><div class="wrap"><a class="back" href="#teams">← All teams</a><div class="eyebrow" style="margin-top:18px">Roster</div><h1>Boys Junior Varsity</h1></div></div>
+<section><div class="wrap body"><p>Roster, coaches and schedule will appear here. Content to be supplied from the current site.</p>
+<div class="facts"><div><b>Coaches</b>To be added</div><div><b>Schedule</b>To be added</div></div></div></section></div>
+<div class="page ev" id="e-modified"><div class="ehero"><div class="wrap"><a class="back" href="#teams">← All teams</a><div class="eyebrow" style="margin-top:18px">Roster</div><h1>Boys Modified</h1></div></div>
+<section><div class="wrap body"><p>Roster, coaches and schedule will appear here. Content to be supplied from the current site.</p>
+<div class="facts"><div><b>Coaches</b>To be added</div><div><b>Schedule</b>To be added</div></div></div></section></div>
+<div class="page ev" id="e-alumni"><div class="ehero"><div class="wrap"><a class="back" href="#teams">← All teams</a><div class="eyebrow" style="margin-top:18px">Alumni</div><h1>Alumni Collegiate Players</h1></div></div>
+<section><div class="wrap body"><p>Roster, coaches and schedule will appear here. Content to be supplied from the current site.</p>
+<div class="facts"><div><b>Coaches</b>To be added</div><div><b>Schedule</b>To be added</div></div></div></section></div>
+<div class="page ev" id="e-records"><div class="ehero"><div class="wrap"><a class="back" href="#teams">← All teams</a><div class="eyebrow" style="margin-top:18px">History</div><h1>Lancaster School Records</h1></div></div>
+<section><div class="wrap body"><p>Roster, coaches and schedule will appear here. Content to be supplied from the current site.</p>
+<div class="facts"><div><b>Coaches</b>To be added</div><div><b>Schedule</b>To be added</div></div></div></section></div>
+<footer><div class="wrap"><div style="display:flex;gap:12px;align-items:center"><span data-logo><svg viewBox="0 0 40 40" role="img" aria-label="Logo placeholder"><rect width="40" height="40" rx="8" fill="#c8102e"/><path d="M13 8h6v18h9v6H13z" fill="#fff"/></svg></span><b>Lancaster Lacrosse Foundation</b></div>
+<p>Lancaster, New York · (716) 668-5486<br><a href="http://www.facebook.com/pages/Lancaster-Lacrosse-Foundation/520532031319456">Facebook</a> · <a href="https://twitter.com/LancLF">X / Twitter</a> · <a href="http://lancasterlax.org/">Lancaster Lax</a> · <a href="http://www.facebook.com/LEAFoundation">LEA Foundation</a></p></div></footer>
+
+<script>
+/* Optional: paste the logo as a data: URI to replace the placeholder everywhere. */
+const LOGO="";
+if(LOGO)document.querySelectorAll('[data-logo]').forEach(e=>e.innerHTML='<img src="'+LOGO+'" alt="Lancaster Lacrosse Foundation logo">');
+document.querySelectorAll('[data-tier]').forEach(a=>a.addEventListener('click',()=>{document.getElementById('t').value=a.dataset.tier}));
+</script></body></html>
